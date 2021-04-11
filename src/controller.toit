@@ -25,7 +25,7 @@ class Controller:
   Returns the new gauge value after the error correction.
   */
   update error/float elapsed/Duration -> float:
-    elapsed_s := elapsed.in_s.to_float / Duration.NANOSECONDS_PER_SECOND
+    elapsed_s := elapsed.in_ns.to_float / Duration.NANOSECONDS_PER_SECOND
     integral_error_ += error * elapsed_s
     derivative_error := (error - last_error_) / elapsed_s
     output := kp * error + ki * integral_error_ + kd * derivative_error
